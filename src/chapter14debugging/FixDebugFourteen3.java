@@ -1,8 +1,10 @@
+package chapter14debugging;
+
 // User selects pizza topping and sees price
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-public class FixDebugFourteen3 extend JFrame implements ItemListener
+public class FixDebugFourteen3 extends JFrame implements ItemListener
 {
    FlowLayout flow = new FlowLayout();
    JComboBox<String> pizzaBox = new JComboBox<String>();
@@ -22,7 +24,7 @@ public class FixDebugFourteen3 extend JFrame implements ItemListener
       add(toppingList);
       pizzaBox.addItem("cheese");
       pizzaBox.addItem("sausage");
-      pizzaBox.addItem("pepperoni")
+      pizzaBox.addItem("pepperoni");
       pizzaBox.addItem("onion");
       pizzaBox.addItem("green pepper");
       pizzaBox.addItem("green olive");
@@ -42,7 +44,7 @@ public class FixDebugFourteen3 extend JFrame implements ItemListener
    public void itemStateChanged(ItemEvent list)
    {
      Object source = list.getSource();
-     if(source = pizzaBox)
+     if(source == pizzaBox)
      {
         int pizzaNum = pizzaBox.getSelectedIndex();
         totalPrice = pizzaPrice[pizzaNum];

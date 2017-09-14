@@ -1,3 +1,5 @@
+package chapter14debugging;
+
 // Displays list of payment options
 //      - credit card, check or cash
 // Displays fee for using each - 5%, 2% or 0%
@@ -6,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class FixDebugFourteen2 extends JFrame implement ItemListener
+public class FixDebugFourteen2 extends JFrame implements ItemListener
 {
    FlowLayout flow = new FlowLayout();
    JComboBox<String> payMethod = new JComboBox<String>();

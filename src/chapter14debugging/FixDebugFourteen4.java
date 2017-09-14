@@ -1,3 +1,5 @@
+package chapter14debugging;
+
 // Beverage selector
 // Milk and cola are $3
 // all other drinks are $2
@@ -5,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class FixDebugFourteen4 extend JFrame implements ItemListener
+public class FixDebugFourteen4 extends JFrame implements ItemListener
 {
    FlowLayout flow = new FlowLayout();
    String title = new String("Beverage Selector");
