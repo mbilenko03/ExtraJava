@@ -14,10 +14,10 @@ import javax.swing.JLabel;
 public class JCheckBoxes extends JFrame implements ItemListener
 {
 	//questions
-	JLabel questionOne = new JLabel("Which of the following are in the top three most populated states?");
-	JLabel questionTwo = new JLabel("Which of the following is the most populated?");
-	JLabel questionThree = new JLabel("Which of the following has Tallahassee as its capital?");
-	JLabel questionFour = new JLabel("Which of the following have the northern mockingbird as their state bird?");
+	JLabel questionOne = new JLabel("Which of the following is the most populated?");
+	JLabel questionTwo = new JLabel("Which of the following is the most densly populated?");
+	JLabel questionThree = new JLabel("Which of the following have Tallahassee as its capital?");
+	JLabel questionFour = new JLabel("Which of the following have the quail as their state bird?");
 	JLabel questionFive = new JLabel("Which of the following have the largest area?");
 	
 	//check boxes
@@ -30,6 +30,9 @@ public class JCheckBoxes extends JFrame implements ItemListener
 	JButton submit = new JButton("Submit");
 	final int WIDTH = 1000;
 	final int HEIGHT = 500;
+	
+	public int score = 0;
+	public int question = 1;
 	
 	public JCheckBoxes() 
 	{
@@ -80,6 +83,41 @@ public class JCheckBoxes extends JFrame implements ItemListener
 	@Override
 	public void itemStateChanged(ItemEvent check) 
 	{
-		 //actions based on choice
+		if (submit.isSelected() == true) 
+		{			
+			if (question == 1) 
+			{
+				if (california.isSelected()) 
+				{
+					if (!texas.isSelected() && !florida.isSelected())
+						score += 5;
+					
+					if (texas.isSelected() && !florida.isSelected() || !texas.isSelected() && florida.isSelected())
+						score += 2;
+						
+					if (texas.isSelected() && florida.isSelected())
+						score += 1;
+				}
+				
+				resetAnswers();
+
+				remove(questionOne);
+				add(questionTwo);
+				score++;
+			}
+		}
+		
+		//when submit is pressed 
+		//Check for check box states
+		//score it
+		//Change question 
+		//restore states of checkboxes
+	}
+	
+	public void resetAnswers() 
+	{
+		california.setSelected(false);
+		texas.setSelected(false);
+		florida.setSelected(false);
 	}
 }
