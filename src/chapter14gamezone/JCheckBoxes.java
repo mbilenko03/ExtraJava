@@ -2,6 +2,7 @@ package chapter14gamezone;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -33,6 +34,7 @@ public class JCheckBoxes extends JFrame implements ItemListener
 	
 	public int score = 0;
 	public int question = 1;
+	public boolean selected = false;
 	
 	public JCheckBoxes() 
 	{
@@ -50,7 +52,7 @@ public class JCheckBoxes extends JFrame implements ItemListener
 		california.addItemListener(this);
 		texas.addItemListener(this);
 		florida.addItemListener(this);
-		submit.addItemListener(this);
+		submit.addActionListener(this);
 		
 		add(questionOne);
 		add(california);
@@ -80,10 +82,17 @@ public class JCheckBoxes extends JFrame implements ItemListener
 		
 	}
 	
+	public void resetAnswers() 
+	{
+		california.setSelected(false);
+		texas.setSelected(false);
+		florida.setSelected(false);
+	}
+	
 	@Override
 	public void itemStateChanged(ItemEvent check) 
 	{
-		if (submit.isSelected() == true) 
+		if (submit.isPressed() == true) 
 		{			
 			if (question == 1) 
 			{
@@ -112,12 +121,12 @@ public class JCheckBoxes extends JFrame implements ItemListener
 		//score it
 		//Change question 
 		//restore states of checkboxes
+	}	
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		
 	}
 	
-	public void resetAnswers() 
-	{
-		california.setSelected(false);
-		texas.setSelected(false);
-		florida.setSelected(false);
-	}
+
 }
