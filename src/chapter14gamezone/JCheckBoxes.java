@@ -12,7 +12,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class JCheckBoxes extends JFrame implements ItemListener, ActionListener
+public class JCheckBoxes extends JFrame implements ActionListener
 {
 	//questions
 	JLabel questionOne = new JLabel("Which of the following is the most populated?");
@@ -20,6 +20,9 @@ public class JCheckBoxes extends JFrame implements ItemListener, ActionListener
 	JLabel questionThree = new JLabel("Which of the following have Tallahassee as its capital?");
 	JLabel questionFour = new JLabel("Which of the following have the quail as their state bird?");
 	JLabel questionFive = new JLabel("Which of the following have the largest area?");
+	
+	JLabel result = new JLabel();
+	JLabel message = new JLabel();
 	
 	//check boxes
 	JCheckBox california = new JCheckBox("California", false);
@@ -34,7 +37,6 @@ public class JCheckBoxes extends JFrame implements ItemListener, ActionListener
 	
 	public int score = 0;
 	public int question = 1;
-	public boolean selected = false;
 	
 	public JCheckBoxes() 
 	{
@@ -48,38 +50,23 @@ public class JCheckBoxes extends JFrame implements ItemListener, ActionListener
 		questionThree.setFont(bigFont);
 		questionFour.setFont(bigFont);
 		questionFive.setFont(bigFont);
-
-		california.addItemListener(this);
-		texas.addItemListener(this);
-		florida.addItemListener(this);
+		
 		submit.addActionListener(this);
 		
 		add(questionOne);
+		add(questionTwo);
+		add(questionThree);
+		add(questionFour);
+		add(questionFive);
+		
 		add(california);
 		add(texas);
 		add(florida);
 		add(submit);
 		
-//		add(questionTwo);
-//		add(california);
-//		add(texas);
-//		add(florida);
-//		
-//		add(questionThree);
-//		add(california);
-//		add(texas);
-//		add(florida);
-//		
-//		add(questionFour);
-//		add(california);
-//		add(texas);
-//		add(florida);
-//		
-//		add(questionFive);
-//		add(california);
-//		add(texas);
-//		add(florida);
-		
+		add(result);
+		add(message);	
+
 	}
 	
 	public void resetAnswers() 
@@ -89,11 +76,28 @@ public class JCheckBoxes extends JFrame implements ItemListener, ActionListener
 		florida.setSelected(false);
 	}
 	
-	@Override
-	public void itemStateChanged(ItemEvent check) 
+	public void finish () 
 	{
-		if (selected) 
-		{			
+			if (score > 21)
+				this.message.setText("Fantastic!");
+			if (score > 15)
+				this.message.setText("Very good!");
+			else
+				this.message.setText("OK.");
+		
+	}
+	
+	@Override	
+		//when submit is pressed 
+		//Check for check box states
+		//score it
+		//Change question 
+		//restore states of checkboxes
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getSource() == submit) 
+		{
 			if (question == 1) 
 			{
 				if (california.isSelected()) 
@@ -108,27 +112,80 @@ public class JCheckBoxes extends JFrame implements ItemListener, ActionListener
 						score += 1;
 				}
 				
-				resetAnswers();
-				
-				remove(questionOne);
-				add(questionTwo);
-				question++;
-				score++;
-				
-				selected = false;
+				resetAnswers();	
 			}
+			if (question == 2)
+			{
+				if (california.isSelected()) 
+				{
+					if (!texas.isSelected() && !florida.isSelected())
+						score += 5;
+					
+					if (texas.isSelected() && !florida.isSelected() || !texas.isSelected() && florida.isSelected())
+						score += 2;
+						
+					if (texas.isSelected() && florida.isSelected())
+						score += 1;
+				}
+				
+				resetAnswers();	
+			}
+			if (question == 3)
+			{
+				if (california.isSelected()) 
+				{
+					if (!texas.isSelected() && !florida.isSelected())
+						score += 5;
+					
+					if (texas.isSelected() && !florida.isSelected() || !texas.isSelected() && florida.isSelected())
+						score += 2;
+						
+					if (texas.isSelected() && florida.isSelected())
+						score += 1;
+				}
+				
+				resetAnswers();	
+			}
+			if (question == 4)
+			{
+				if (california.isSelected()) 
+				{
+					if (!texas.isSelected() && !florida.isSelected())
+						score += 5;
+					
+					if (texas.isSelected() && !florida.isSelected() || !texas.isSelected() && florida.isSelected())
+						score += 2;
+						
+					if (texas.isSelected() && florida.isSelected())
+						score += 1;
+				}
+				
+				resetAnswers();	
+			}
+			if (question == 5)
+			{
+				if (california.isSelected()) 
+				{
+					if (!texas.isSelected() && !florida.isSelected())
+						score += 5;
+					
+					if (texas.isSelected() && !florida.isSelected() || !texas.isSelected() && florida.isSelected())
+						score += 2;
+						
+					if (texas.isSelected() && florida.isSelected())
+						score += 1;
+				}
+				
+				resetAnswers();	
+			}
+			if (question > 5) 
+			{
+				finish();
+			}
+			
+			this.result.setText("Score: " + score);
+			question++;
 		}
-		
-		//when submit is pressed 
-		//Check for check box states
-		//score it
-		//Change question 
-		//restore states of checkboxes
-	}	
-	public void actionPerformed(ActionEvent e)
-	{
-		if(e.getSource() == submit)
-			selected = true;
 	}
 	
 
