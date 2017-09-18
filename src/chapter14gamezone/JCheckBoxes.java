@@ -15,12 +15,16 @@ import javax.swing.JLabel;
 public class JCheckBoxes extends JFrame implements ActionListener
 {
 	//questions
-	JLabel questionOne = new JLabel("Which of the following is the most populated?");
-	JLabel questionTwo = new JLabel("Which of the following is the most densly populated?");
-	JLabel questionThree = new JLabel("Which of the following have Tallahassee as its capital?");
-	JLabel questionFour = new JLabel("Which of the following have the quail as their state bird?");
-	JLabel questionFive = new JLabel("Which of the following have the largest area?");
-	
+	public String[] questions = new String[] {"Which of the following is the most populated?", 
+			"Which of the following is the most densly populated?", 
+			"Which of the following have Tallahassee as its capital?",
+			"Which of the following have the quail as their state bird?",
+			"Which of the following have the largest area?"
+			};
+
+	JLabel questionLabel = new JLabel(questions[1]);
+
+	//info
 	JLabel result = new JLabel();
 	JLabel message = new JLabel();
 	
@@ -45,20 +49,13 @@ public class JCheckBoxes extends JFrame implements ActionListener
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
 
-		questionOne.setFont(bigFont);
-		questionTwo.setFont(bigFont);
-		questionThree.setFont(bigFont);
-		questionFour.setFont(bigFont);
-		questionFive.setFont(bigFont);
+		questionLabel.setFont(bigFont);
+
 		
 		submit.addActionListener(this);
 		
-		add(questionOne);
-		add(questionTwo);
-		add(questionThree);
-		add(questionFour);
-		add(questionFive);
-		
+		add(questionLabel);
+
 		add(california);
 		add(texas);
 		add(florida);
@@ -69,11 +66,13 @@ public class JCheckBoxes extends JFrame implements ActionListener
 
 	}
 	
-	public void resetAnswers() 
+	public void reset() 
 	{
 		california.setSelected(false);
 		texas.setSelected(false);
 		florida.setSelected(false);
+		
+		
 	}
 	
 	public void finish () 
@@ -85,6 +84,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 			else
 				this.message.setText("OK.");
 		
+			this.questionLabel.setText(questions[question]);
 	}
 	
 	@Override	
@@ -112,7 +112,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 						score += 1;
 				}
 				
-				resetAnswers();	
+				reset();	
 			}
 			if (question == 2)
 			{
@@ -128,7 +128,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 						score += 1;
 				}
 				
-				resetAnswers();	
+				reset();	
 			}
 			if (question == 3)
 			{
@@ -144,7 +144,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 						score += 1;
 				}
 				
-				resetAnswers();	
+				reset();	
 			}
 			if (question == 4)
 			{
@@ -160,7 +160,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 						score += 1;
 				}
 				
-				resetAnswers();	
+				reset();	
 			}
 			if (question == 5)
 			{
@@ -176,7 +176,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 						score += 1;
 				}
 				
-				resetAnswers();	
+				reset();	
 			}
 			if (question > 5) 
 			{
