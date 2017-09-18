@@ -116,15 +116,15 @@ public class JCheckBoxes extends JFrame implements ActionListener
 			}
 			if (question == 2)
 			{
-				if (california.isSelected()) 
+				if (florida.isSelected()) 
 				{
-					if (!texas.isSelected() && !florida.isSelected())
+					if (!texas.isSelected() && !california.isSelected())
 						score += 5;
 					
-					if (texas.isSelected() && !florida.isSelected() || !texas.isSelected() && florida.isSelected())
+					if (texas.isSelected() && !california.isSelected() || !texas.isSelected() && california.isSelected())
 						score += 2;
 						
-					if (texas.isSelected() && florida.isSelected())
+					if (texas.isSelected() && california.isSelected())
 						score += 1;
 				}
 				
@@ -132,15 +132,15 @@ public class JCheckBoxes extends JFrame implements ActionListener
 			}
 			if (question == 3)
 			{
-				if (california.isSelected()) 
+				if (florida.isSelected()) 
 				{
-					if (!texas.isSelected() && !florida.isSelected())
+					if (!texas.isSelected() && !california.isSelected())
 						score += 5;
 					
-					if (texas.isSelected() && !florida.isSelected() || !texas.isSelected() && florida.isSelected())
+					if (texas.isSelected() && !california.isSelected() || !texas.isSelected() && california.isSelected())
 						score += 2;
 						
-					if (texas.isSelected() && florida.isSelected())
+					if (texas.isSelected() && california.isSelected())
 						score += 1;
 				}
 				
@@ -164,15 +164,15 @@ public class JCheckBoxes extends JFrame implements ActionListener
 			}
 			if (question == 5)
 			{
-				if (california.isSelected()) 
+				if (texas.isSelected()) 
 				{
-					if (!texas.isSelected() && !florida.isSelected())
+					if (!california.isSelected() && !florida.isSelected())
 						score += 5;
 					
-					if (texas.isSelected() && !florida.isSelected() || !texas.isSelected() && florida.isSelected())
+					if (california.isSelected() && !florida.isSelected() || !california.isSelected() && florida.isSelected())
 						score += 2;
 						
-					if (texas.isSelected() && florida.isSelected())
+					if (california.isSelected() && florida.isSelected())
 						score += 1;
 				}
 				
