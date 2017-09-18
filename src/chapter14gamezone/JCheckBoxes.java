@@ -88,11 +88,12 @@ public class JCheckBoxes extends JFrame implements ActionListener
 	}
 	
 	@Override	
-		//when submit is pressed 
-		//Check for check box states
-		//score it
-		//Change question 
-		//restore states of checkboxes
+	//when submit is pressed 
+	//Check for check box states
+	//score it
+	//Change question 
+	//restore states of check boxes
+	//displays message when finished
 	
 	public void actionPerformed(ActionEvent e)
 	{
