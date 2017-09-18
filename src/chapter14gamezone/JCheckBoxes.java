@@ -12,7 +12,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class JCheckBoxes extends JFrame implements ItemListener
+public class JCheckBoxes extends JFrame implements ItemListener, ActionListener
 {
 	//questions
 	JLabel questionOne = new JLabel("Which of the following is the most populated?");
@@ -92,7 +92,7 @@ public class JCheckBoxes extends JFrame implements ItemListener
 	@Override
 	public void itemStateChanged(ItemEvent check) 
 	{
-		if (submit.isPressed() == true) 
+		if (selected) 
 		{			
 			if (question == 1) 
 			{
@@ -109,10 +109,13 @@ public class JCheckBoxes extends JFrame implements ItemListener
 				}
 				
 				resetAnswers();
-
+				
 				remove(questionOne);
 				add(questionTwo);
+				question++;
 				score++;
+				
+				selected = false;
 			}
 		}
 		
@@ -122,10 +125,10 @@ public class JCheckBoxes extends JFrame implements ItemListener
 		//Change question 
 		//restore states of checkboxes
 	}	
-	
 	public void actionPerformed(ActionEvent e)
 	{
-		
+		if(e.getSource() == submit)
+			selected = true;
 	}
 	
 
