@@ -19,7 +19,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 			"Which of the following have the quail as their state bird?",
 			"Which of the following have the largest area?"
 			};
-	JLabel questionLabel = new JLabel(questions[1]);
+	JLabel questionLabel = new JLabel(questions[0]);
 
 	//info
 	JLabel result = new JLabel();
@@ -37,7 +37,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 	final int HEIGHT = 500;
 	
 	public int score = 0;
-	public int question = 1;
+	public int question = 0;
 	
 	public JCheckBoxes() 
 	{
@@ -68,8 +68,8 @@ public class JCheckBoxes extends JFrame implements ActionListener
 		california.setSelected(false);
 		texas.setSelected(false);
 		florida.setSelected(false);
-		
-		
+				
+		this.questionLabel.setText(questions[question]);
 	}
 	
 	public void finish () 
@@ -81,7 +81,6 @@ public class JCheckBoxes extends JFrame implements ActionListener
 			else
 				this.message.setText("OK.");
 		
-			this.questionLabel.setText(questions[question]);
 	}
 	
 	@Override	
@@ -96,7 +95,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 	{
 		if(e.getSource() == submit) 
 		{
-			if (question == 1) 
+			if (question == 0) 
 			{
 				if (california.isSelected()) 
 				{
@@ -110,9 +109,23 @@ public class JCheckBoxes extends JFrame implements ActionListener
 						score += 1;
 				}
 				
-				reset();	
+					
 			}
-			if (question == 2)
+			else if (question == 1)
+			{
+				if (florida.isSelected()) 
+				{
+					if (!texas.isSelected() && !california.isSelected())
+						score += 5;
+					
+					if (texas.isSelected() && !california.isSelected() || !texas.isSelected() && california.isSelected())
+						score += 2;
+						
+					if (texas.isSelected() && california.isSelected())
+						score += 1;
+				}
+							}
+			else if (question == 2)
 			{
 				if (florida.isSelected()) 
 				{
@@ -126,25 +139,8 @@ public class JCheckBoxes extends JFrame implements ActionListener
 						score += 1;
 				}
 				
-				reset();	
 			}
-			if (question == 3)
-			{
-				if (florida.isSelected()) 
-				{
-					if (!texas.isSelected() && !california.isSelected())
-						score += 5;
-					
-					if (texas.isSelected() && !california.isSelected() || !texas.isSelected() && california.isSelected())
-						score += 2;
-						
-					if (texas.isSelected() && california.isSelected())
-						score += 1;
-				}
-				
-				reset();	
-			}
-			if (question == 4)
+			else if (question == 3)
 			{
 				if (california.isSelected()) 
 				{
@@ -158,9 +154,8 @@ public class JCheckBoxes extends JFrame implements ActionListener
 						score += 1;
 				}
 				
-				reset();	
 			}
-			if (question == 5)
+			else if (question == 4)
 			{
 				if (texas.isSelected()) 
 				{
@@ -174,15 +169,18 @@ public class JCheckBoxes extends JFrame implements ActionListener
 						score += 1;
 				}
 				
-				reset();	
 			}
-			if (question > 5) 
+			question++;
+			
+			if (question >= 5) 
 			{
 				finish();
 			}
+			else
+				reset();
 			
 			this.result.setText("Score: " + score);
-			question++;
+			
 		}
 	}
 	
