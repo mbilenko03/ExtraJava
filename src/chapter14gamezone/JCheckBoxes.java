@@ -127,6 +127,7 @@ public class JCheckBoxes extends JFrame implements ActionListener {
 						score += 1;
 				}
 
+				
 			} else if (question == 1) {
 				if (florida.isSelected()) {
 					if (!texas.isSelected() && !california.isSelected())
