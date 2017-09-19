@@ -4,6 +4,13 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -59,8 +66,9 @@ public class JCheckBoxes extends JFrame implements ActionListener
 		add(submit);
 		
 		add(result);
-		add(message);	
-
+		add(message);
+		
+		this.message.setText("Previous score was " + getScore());
 	}
 	
 	public void reset() 
@@ -72,7 +80,7 @@ public class JCheckBoxes extends JFrame implements ActionListener
 		this.questionLabel.setText(questions[question]);
 	}
 	
-	public void finish () 
+	public void finish() 
 	{
 			if (score > 21)
 				this.message.setText("Fantastic!");
@@ -80,7 +88,35 @@ public class JCheckBoxes extends JFrame implements ActionListener
 				this.message.setText("Very good!");
 			else
 				this.message.setText("OK.");
-		
+			saveScores();
+	}
+	
+	public String getScore() 
+	{
+		String lastScore = "";
+		try 
+		{
+			lastScore = new String(Files.readAllBytes(Paths.get("scores.txt")));
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+		return lastScore;
+	}
+	
+	public void saveScores()
+	{
+		List<String> lines = Arrays.asList(String.valueOf(score));
+		Path file = Paths.get("scores.txt");
+		try 
+		{
+			Files.write(file, lines, Charset.forName("UTF-8"));
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}	
 	}
 	
 	@Override	
