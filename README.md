@@ -1,6 +1,5 @@
 # ExtraJava
 ```html
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
 <!DOCTYPE html>
 <html>
 <head>
