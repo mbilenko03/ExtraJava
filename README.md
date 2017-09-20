@@ -1,13 +1,6 @@
 # ExtraJava
-```html
-<!DOCTYPE html>
 <html>
-<head>
-<title>HedgeYourBetFlowChart</title>
-<meta charset="utf-8"/>
-</head>
-<body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#000000&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36\&quot; version=\&quot;7.4.3\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;8ce9d11a-91a2-4d17-14d8-a56ed91bf033\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
-<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
-</body>
-</html>
-```
+<body>
+  <img src="https://www.draw.io/?lightbox=1&highlight=999999&edit=_blank&layers=1&nav=1#G0B9SlIALV9DT1SjBKcUxabDJzZXc" alt="Smiley face" width="42" height="42">
+<\body>
+<\html>
