@@ -67,7 +67,8 @@ public class JCheckBoxes extends JFrame implements ActionListener {
 		this.message.setText("Previous score was " + getScore());
 	}
 
-	public void reset() {
+	public void reset() 
+	{
 		california.setSelected(false);
 		texas.setSelected(false);
 		florida.setSelected(false);
@@ -75,7 +76,8 @@ public class JCheckBoxes extends JFrame implements ActionListener {
 		this.questionLabel.setText(questions[question]);
 	}
 
-	public void finish() {
+	public void finish() 
+	{
 		if (score > 21)
 			this.message.setText("Fantastic!");
 		if (score > 15)
@@ -85,7 +87,8 @@ public class JCheckBoxes extends JFrame implements ActionListener {
 		saveScores();
 	}
 
-	public String getScore() {
+	public String getScore() 
+	{
 		String lastScore = "";
 		try {
 			lastScore = new String(Files.readAllBytes(Paths.get("scores.txt")));
