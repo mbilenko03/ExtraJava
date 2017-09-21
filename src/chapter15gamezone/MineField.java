@@ -30,8 +30,9 @@ public class MineField extends JFrame implements MouseInputListener
 		for(int i = 0; i < 20; ++i)
 		{
 			panel[i] = new JPanel();
-			con.add(panel[i], BorderLayout.CENTER);
+			con.add(panel[i]);
 			panel[i].setBackground(Color.BLUE);
+			panel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
 		
 		addMouseListener(this);
@@ -50,6 +51,7 @@ public class MineField extends JFrame implements MouseInputListener
 	@Override
 	public void mouseClicked(MouseEvent e) 
 	{
+		
 	}
 
 	@Override
