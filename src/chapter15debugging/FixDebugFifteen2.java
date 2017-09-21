@@ -4,7 +4,6 @@ package chapter15debugging;
 // using BorderLayout
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 public class FixDebugFifteen2 extends JFrame
 {
    // Use button labels that correspond to the positions in the layout
