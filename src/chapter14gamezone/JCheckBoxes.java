@@ -17,7 +17,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class JCheckBoxes extends JFrame implements ActionListener {
+public class JCheckBoxes extends JFrame implements ActionListener 
+{
 	// questions
 	public String[] questions = new String[] { "Which of the following is the most populated?",
 			"Which of the following is the most densly populated?",
@@ -182,7 +183,8 @@ public class JCheckBoxes extends JFrame implements ActionListener {
 			}
 			question++;
 
-			if (question >= 5) {
+			if (question >= 5) 
+			{
 				finish();
 			} else
 				reset();
