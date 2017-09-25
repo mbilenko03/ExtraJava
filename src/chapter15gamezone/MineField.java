@@ -24,6 +24,15 @@ public class MineField extends JFrame implements ActionListener
 	
 	JLabel message = new JLabel();
 	
+	JMenuBar menuBar = new JMenuBar();
+	
+	JMenu difficulty = new JMenu();
+	JMenu congratzMessage = new JMenu("The Mine Field");
+
+	JMenuItem Easy = new JMenuItem();
+	JMenuItem Intermediate = new JMenuItem();
+	JMenuItem Difficult = new JMenuItem();
+	
 	final int sizeWidth = 4;
 	final int sizeHeigth = 5;
 	static int bomb;
@@ -54,7 +63,12 @@ public class MineField extends JFrame implements ActionListener
 		mainPanel.add(gamePanel, BorderLayout.CENTER);
 		add(mainPanel);
 		
-		bomb = 1 + (int)(Math.random() * 20);
+		bomb = 1 + (int)(Math.random() * (sizeWidth * sizeHeigth));
+		
+		//mainPanel.add(menuBar, BorderLayout.NORTH);
+		//menuBar.add(difficulty);
+		//menuBar.add(congratzMessage);
+		
 	}
 	
 	public static void main(String[] args) 
