@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,6 +22,7 @@ public class JCatchTheMouse extends JFrame implements ActionListener
 
 	Font messageFont = new Font("Comic Sans", Font.BOLD, 15);
 	Font buttonFont = new Font("Comic Sans", Font.BOLD, 24);
+	public long startTime;
 
 	
 	final static int sizeHeigth = 8;
@@ -59,32 +61,41 @@ public class JCatchTheMouse extends JFrame implements ActionListener
 
 		x = 1 + (int)(Math.random() * (sizeHeigth * sizeWidth));
 		buttons[x].setText("X");
+		
+
 	}
 	
 	public static void main(String[] args)
 	{
-	      JCatchTheMouse frame = new JCatchTheMouse();
+		long startTime = System.currentTimeMillis();
+	    JCatchTheMouse frame = new JCatchTheMouse();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent source)
 	{
-		for (int i = 0; i < 20; i++) 
-		{
-			if (mouseClickCount >=  10)
+		if (mouseClickCount >=  10)
 			{
-				message.setText("Congradulations! Your hit percent is " + Math.round((mouseClickCount/totalClickCount)*100) + "%!");
 				buttons[x].setText("");
+				long endTime = System.currentTimeMillis();
+				long totalTime = endTime - startTime;
+				
+				String gameTime = String.format("%d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(totalTime), TimeUnit.MILLISECONDS.toMinutes(totalTime) - 
+						TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(totalTime)));
+				
+				message.setText("Congradulations! Your hit percent is " + Math.round((mouseClickCount/totalClickCount)*100) + "%!"
+						+ " It took you " + gameTime + " seconds!");
+
+			}	
+			
+		if (source.getSource()==buttons[x])
+			{
+			buttons[x].setText("");
+			x = 1 + (int)(Math.random() * (sizeHeigth * sizeWidth));
+			buttons[x].setText("X");
+			mouseClickCount++;
 			}
 			
-			if (source.getSource()==buttons[x])
-			{
-				buttons[x].setText("");
-				x = 1 + (int)(Math.random() * (sizeHeigth * sizeWidth));
-				buttons[x].setText("X");
-				mouseClickCount++;
-			}
-		}
 		totalClickCount++;
 	}
 
