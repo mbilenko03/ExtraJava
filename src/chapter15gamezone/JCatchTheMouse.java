@@ -27,8 +27,8 @@ public class JCatchTheMouse extends JFrame implements ActionListener
 	final static int sizeWidth = 6;
 	static int x;
 	
-	static int totalClickCount = 0;
-	static int mouseClickCount = 0;
+	static double totalClickCount = 0;
+	static double mouseClickCount = 0;
 	
 	static JButton[] buttons = new JButton[sizeHeigth * sizeWidth];
 	
@@ -73,7 +73,7 @@ public class JCatchTheMouse extends JFrame implements ActionListener
 		{
 			if (mouseClickCount >=  10)
 			{
-				message.setText("Congradulations! Your hit percent is " + (mouseClickCount/totalClickCount)*100 + "%!");
+				message.setText("Congradulations! Your hit percent is " + Math.round((mouseClickCount/totalClickCount)*100) + "%!");
 				buttons[x].setText("");
 			}
 			
