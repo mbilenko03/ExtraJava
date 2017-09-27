@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.stream.IntStream;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -55,7 +56,12 @@ public class MineSweeper extends JFrame implements ActionListener
 		
 		for (int i = 0; i < numberOfBombs; i++) 
 		{
-			bombLocations[i] = 1 + (int)(Math.random() * ((sizeHeigth * sizeWidth)-1));
+			int randomNumber = 1 + (int)(Math.random() * ((sizeHeigth * sizeWidth)-1));
+			
+			//while (contains(bombLocations, randomNumber))
+				//randomNumber = 1 + (int)(Math.random() * ((sizeHeigth * sizeWidth)-1));
+			
+			bombLocations[i] = randomNumber;
 			buttons[bombLocations[i]].setText("BOMB");
 			//prevent from bomb being created in same spot
 		}
@@ -69,20 +75,13 @@ public class MineSweeper extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent source)
 	{
-		for (int i = 0; i < numberOfBombs; i++) 
-		{
-			if (source.getSource()==buttons[i])
-			{
-				for (int j = 0; j < (sizeHeigth * sizeWidth); j++) 
-				{
-					buttons[j].setBackground(Color.GRAY);
-					buttons[bombLocations[i]].setBackground(Color.RED);
-					message.setText("You Lost!");
-				}
-				
-				//Show all bomb positions and values for each square
-			}
-		}
+		// Check location of button being pressed
+		// Check if it is a bomb location
+		// if it is change all bombs to red and all normal squares to gray
+		// show values
+		// else if location is normal square
+		// make gray and show value
+		
 	}
 
 }
