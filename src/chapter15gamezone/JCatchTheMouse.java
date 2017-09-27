@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -60,7 +59,7 @@ public class JCatchTheMouse extends JFrame implements ActionListener
 		mainPanel.add(gamePanel, BorderLayout.CENTER);
 		add(mainPanel);
 
-		x = 1 + (int)(Math.random() * (sizeHeigth * sizeWidth));
+		x = 1 + (int)(Math.random() * ((sizeHeigth * sizeWidth)-1));
 		buttons[x].setText("X");
 		
 

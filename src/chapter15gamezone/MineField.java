@@ -73,7 +73,7 @@ public class MineField extends JFrame implements ActionListener
 		mainPanel.add(difficulty, BorderLayout.SOUTH);
 		add(mainPanel);
 		
-		bomb = 1 + (int)(Math.random() * (sizeHeigth * sizeWidth));			
+		bomb = 1 + (int)(Math.random() * ((sizeHeigth * sizeWidth)-1));			
 	}
 	
 	public static void main(String[] args) 
