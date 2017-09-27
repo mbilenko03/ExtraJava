@@ -22,8 +22,8 @@ public class JCatchTheMouse extends JFrame implements ActionListener
 
 	Font messageFont = new Font("Comic Sans", Font.BOLD, 15);
 	Font buttonFont = new Font("Comic Sans", Font.BOLD, 24);
-	public long startTime;
 
+	long startTime = System.nanoTime();
 	
 	final static int sizeHeigth = 8;
 	final static int sizeWidth = 6;
@@ -33,6 +33,7 @@ public class JCatchTheMouse extends JFrame implements ActionListener
 	static double mouseClickCount = 0;
 	
 	static JButton[] buttons = new JButton[sizeHeigth * sizeWidth];
+
 	
 	public JCatchTheMouse() 
 	{
@@ -73,21 +74,7 @@ public class JCatchTheMouse extends JFrame implements ActionListener
 
 	@Override
 	public void actionPerformed(ActionEvent source)
-	{
-		if (mouseClickCount >=  10)
-			{
-				buttons[x].setText("");
-				long endTime = System.currentTimeMillis();
-				long totalTime = endTime - startTime;
-				
-				String gameTime = String.format("%d min, %d sec", TimeUnit.MILLISECONDS.toMinutes(totalTime), TimeUnit.MILLISECONDS.toMinutes(totalTime) - 
-						TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(totalTime)));
-				
-				message.setText("Congradulations! Your hit percent is " + Math.round((mouseClickCount/totalClickCount)*100) + "%!"
-						+ " It took you " + gameTime + " seconds!");
-
-			}	
-			
+	{	
 		if (source.getSource()==buttons[x])
 			{
 			buttons[x].setText("");
@@ -97,6 +84,16 @@ public class JCatchTheMouse extends JFrame implements ActionListener
 			}
 			
 		totalClickCount++;
+		
+		if (mouseClickCount >=  10)
+		{
+			buttons[x].setText("");
+			long endTime = System.nanoTime() - startTime;
+			
+			message.setText("Congradulations! Your hit percent is " + Math.round((mouseClickCount/totalClickCount)*100) + "%!"
+					+ " It took you " + (int)(endTime/1000000000) + " seconds!");
+
+		}	
 	}
 
 }
