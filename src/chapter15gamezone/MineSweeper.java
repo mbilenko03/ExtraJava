@@ -75,8 +75,8 @@ public class MineSweeper extends JFrame implements ActionListener
 			if (bombLocations.get(i) == randomNumber)
 				return getUniqueRand();
 				
-	}
 		return randomNumber;
+	}
 
 	public static void main(String[] args)
 	{
