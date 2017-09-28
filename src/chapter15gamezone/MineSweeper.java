@@ -6,6 +6,9 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import javax.swing.JButton;
@@ -28,7 +31,7 @@ public class MineSweeper extends JFrame implements ActionListener
 	
 	static JButton[] buttons = new JButton[sizeHeigth * sizeWidth];
 	
-	static int[] bombLocations = new int[numberOfBombs];
+	static List<Integer> bombLocations = new ArrayList<Integer>();
 	
 	public MineSweeper () 
 	{
@@ -53,19 +56,27 @@ public class MineSweeper extends JFrame implements ActionListener
 		mainPanel.add(message, BorderLayout.NORTH);
 		mainPanel.add(gamePanel, BorderLayout.CENTER);
 		add(mainPanel);
+
 		
 		for (int i = 0; i < numberOfBombs; i++) 
-		{
-			int randomNumber = 1 + (int)(Math.random() * ((sizeHeigth * sizeWidth)-1));
-			
-			//while (contains(bombLocations, randomNumber))
-				//randomNumber = 1 + (int)(Math.random() * ((sizeHeigth * sizeWidth)-1));
-			
-			bombLocations[i] = randomNumber;
-			buttons[bombLocations[i]].setText("BOMB");
+		{	
+			bombLocations.add(getUniqueRand());
+			buttons[bombLocations.get(i)].setText("BOMB");
 			//prevent from bomb being created in same spot
 		}
+		
 	}
+	
+	public static int getUniqueRand() 
+	{
+		int randomNumber = 1 + (int)(Math.random() * ((sizeHeigth * sizeWidth)-1));
+		
+		for (int i = 0; i < bombLocations.size(); i++)
+			if (bombLocations.get(i) == randomNumber)
+				return getUniqueRand();
+				
+	}
+		return randomNumber;
 
 	public static void main(String[] args)
 	{
