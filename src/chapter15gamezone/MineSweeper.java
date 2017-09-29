@@ -65,6 +65,18 @@ public class MineSweeper extends JFrame implements ActionListener
 			//prevent from bomb being created in same spot
 		}
 		
+		for (int i = 0; i < (sizeHeigth * sizeWidth); i++) 
+		{
+			for (int j = 0; j < numberOfBombs; j++) 
+			{
+				if (i != bombLocations.get(j))
+					buttons[i].setText(Integer.toString(setBombValue(i)));
+				else
+					buttons[i].setText("BOMB");
+
+			}
+		}
+		
 	}
 	
 	public static int getUniqueRand() 
@@ -76,6 +88,48 @@ public class MineSweeper extends JFrame implements ActionListener
 				return getUniqueRand();
 				
 		return randomNumber;
+	}
+	
+	public static int setBombValue(int position)
+	{
+		int totalBombCount = 0;
+		
+		int column =  sizeWidth % position - 1;
+		int row =  sizeHeigth % position - 1;
+
+		 
+		for (int i = 0; i < numberOfBombs; i++) 
+		{
+			int bombPosition = bombLocations.get(i);
+			int bombColumn = sizeWidth % bombPosition - 1;
+			int bombRow = sizeHeigth % bombPosition - 1;
+
+			
+			if (bombRow == row + 1 && bombColumn == column)
+				totalBombCount++;
+			if (bombRow == row - 1 && bombColumn == column)
+				totalBombCount++;
+			if (bombColumn == column + 1 && bombRow == row)
+				totalBombCount++;
+			if (bombColumn == column - 1 && bombRow == row)
+				totalBombCount++;
+			if (bombRow == row + 1 && bombColumn == column + 1)
+				totalBombCount++;
+			if (bombRow == row + 1 && bombColumn == column - 1)
+				totalBombCount++;
+			if (bombRow == row - 1 && bombColumn == column + 1)
+				totalBombCount++;
+			if (bombRow == row - 1 && bombColumn == column - 1)
+				totalBombCount++;
+			
+			//check row+1, row-1, 
+			//column+1, column-1, 
+			//row+1 column+1, row+1 column-1, 
+			//row-1 column+1, row-1 column-1 
+		}
+
+		
+		return totalBombCount;	
 	}
 
 	public static void main(String[] args)
