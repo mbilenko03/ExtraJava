@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class MineSweeper extends JFrame implements ActionListener
@@ -25,7 +26,9 @@ public class MineSweeper extends JFrame implements ActionListener
 	final static int sizeWidth = 5;
 	final static int numberOfBombs = 4;
 
-	Font textFont = new Font("Comic Sans", Font.BOLD, 15);
+	static int squaresClicked = 0;
+
+	Font textFont = new Font("Comic Sans", Font.BOLD, 20);
 
 	static JButton[] buttons = new JButton[sizeHeigth * sizeWidth];
 
@@ -33,11 +36,12 @@ public class MineSweeper extends JFrame implements ActionListener
 
 	public MineSweeper()
 	{
+		super("Mine Sweeper");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 500);
 		setVisible(true);
 
-		message.setText("Mine Sweeper");
+		message.setText("Welcome!");
 
 		gamePanel.setLayout(new GridLayout(sizeHeigth, sizeWidth));
 
@@ -57,18 +61,17 @@ public class MineSweeper extends JFrame implements ActionListener
 
 		for (int i = 0; i < numberOfBombs; i++)
 		{
+			// prevents from bomb being created in same spot
 			bombLocations.add(getUniqueRand());
-			buttons[bombLocations.get(i)].setText("BOMB");
-			// prevent from bomb being created in same spot
+			// to debug:
+			// buttons[bombLocations.get(i)].setText("BOMB");
 		}
 
-		for (int i = 0; i < (sizeHeigth * sizeWidth); i++)
-		{
-			if (!bombLocations.contains(i))
-			{
-				buttons[i].setText(Integer.toString(getBombValue(i)));
-			}
-		}
+		/*
+		 * for (int i = 0; i < (sizeHeigth * sizeWidth); i++) { if
+		 * (!bombLocations.contains(i)) {
+		 * buttons[i].setText(Integer.toString(getBombValue(i))); } }
+		 */
 	}
 
 	public static int getUniqueRand()
@@ -88,7 +91,7 @@ public class MineSweeper extends JFrame implements ActionListener
 	{
 		int totalBombCount = 0;
 
-		int row = position % sizeWidth; // 100% correct
+		int row = position % sizeWidth;
 		int column = position / sizeWidth;
 
 		for (int i = 0; i < numberOfBombs; i++)
@@ -131,16 +134,56 @@ public class MineSweeper extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent source)
 	{
-		// Check location of button being pressed
-		// Check if it is a bomb location
-		// if it is change all bombs to red and all normal squares to gray
-		// show values
-		// else if location is normal square
-		// make gray and show value
 
+		// Check location of button being pressed
 		for (int i = 0; i < (sizeHeigth * sizeWidth); i++)
 		{
+			if (source.getSource() == buttons[i])
+			{
+				// Check if it is a bomb location
+				if (bombLocations.contains(i))
+				{
+					// Change all bombs to red and all normal squares to gray and show values
+					for (int j = 0; j < (sizeHeigth * sizeWidth); j++)
+					{
+						buttons[j].setBackground(Color.DARK_GRAY);
+						buttons[j].setText(Integer.toString(getBombValue(j)));
+						buttons[j].setEnabled(false);
+					}
+					for (int k = 0; k < numberOfBombs; k++)
+					{
+						buttons[bombLocations.get(k)].setBackground(Color.RED);
+						buttons[bombLocations.get(k)].setText("BOMB");
+					}
 
+					message.setText("You lost!");
+					JOptionPane.showMessageDialog(null, "You Lost");
+
+				}
+				// else if location is normal square
+				else
+				{
+					// make gray and show value
+					buttons[i].setBackground(Color.GRAY);
+					buttons[i].setText(Integer.toString(getBombValue(i)));
+					squaresClicked++;
+
+					// Check if win Game
+					if (squaresClicked == (sizeHeigth * sizeWidth) - numberOfBombs)
+					{
+
+						for (int l = 0; l < (sizeHeigth * sizeWidth); l++)
+						{
+							buttons[l].setEnabled(false);
+						}
+
+						message.setText("Congradulations! You Won!");
+						JOptionPane.showMessageDialog(null, "Congradulations! You Won!");
+
+					}
+				}
+
+			}
 		}
 
 	}
