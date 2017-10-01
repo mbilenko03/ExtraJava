@@ -1,4 +1,4 @@
-package chapter15gamezone;
+package gameZone;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

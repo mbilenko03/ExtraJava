@@ -1,4 +1,4 @@
-package chapter15debugging;
+package debugging;
 
 // Demonstrates layout positions
 // using BorderLayout

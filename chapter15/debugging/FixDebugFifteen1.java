@@ -1,4 +1,4 @@
-package chapter15debugging;
+package debugging;
 
 import javax.swing.*;
 import java.awt.*;
