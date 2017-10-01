@@ -1,4 +1,4 @@
-package debugging;
+package chapter14debugging;
 
 // Creates a frame with a specified size
 // Twice as tall as wide

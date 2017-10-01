@@ -1,4 +1,4 @@
-package debugging;
+package chapter15debugging;
 
 // Lets user type keys
 // Displays each key typed

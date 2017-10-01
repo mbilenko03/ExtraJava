@@ -1,4 +1,4 @@
-package debugging;
+package chapter14debugging;
 
 // Beverage selector
 // Milk and cola are $3

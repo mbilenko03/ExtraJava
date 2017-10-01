@@ -1,4 +1,4 @@
-package debugging;
+package chapter14debugging;
 
 // User selects pizza topping and sees price
 import javax.swing.*;

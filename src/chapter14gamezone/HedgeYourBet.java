@@ -1,4 +1,4 @@
-package gamezone;
+package chapter14gamezone;
 
 public class HedgeYourBet
 {

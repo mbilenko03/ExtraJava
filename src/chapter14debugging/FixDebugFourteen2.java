@@ -1,4 +1,4 @@
-package debugging;
+package chapter14debugging;
 
 // Displays list of payment options
 //      - credit card, check or cash

@@ -1,4 +1,4 @@
-package gameZone;
+package chapter15gamezone;
 
 import javax.swing.*;
 
@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.event.MouseInputListener;
 
-import debugging.FixDebugFifteen1;
+import chapter15debugging.FixDebugFifteen1;
 import sun.applet.Main;
 
 //Page 85
