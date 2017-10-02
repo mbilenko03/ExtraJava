@@ -1,4 +1,6 @@
-// This program should display a bullseye, not a cone
+package chapter16debugging;
+
+// This program should display a bulls eye, not a cone
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
@@ -15,7 +17,7 @@ public class FixDebugSixteen1 extends JPanel
    public void paintComponent(Graphics gr)
    {
       super.paintComponent(gr);
-     // Need to decrement the 'corner' dimension to create the bullseye shape
+     // Need to decrement the 'corner' dimension to create the bulls eye shape
      // instead of the cone
       for(corner = 150, radius = 2; radius < 200; radius += 6, corner -= 3)
       {

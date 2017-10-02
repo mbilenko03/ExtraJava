@@ -1,3 +1,5 @@
+package chapter16debugging;
+
 // This program displays promotional messages
 // with the click of a button
 // The button is disabled when all messages are on screen

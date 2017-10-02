@@ -1,3 +1,5 @@
+package chapter16debugging;
+
 // The panel should change colorwhen user's mouse enters or exits it
 // A circle should appear wherever the user clicks
 // The circle becomes smaller when the user double-clicks

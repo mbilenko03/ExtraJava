@@ -1,3 +1,5 @@
+package chapter16debugging;
+
 // This program shows a customer
 // what a shirt looks like in different colors
 import javax.swing.*;
