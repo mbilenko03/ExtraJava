@@ -66,12 +66,6 @@ public class MineSweeper extends JFrame implements ActionListener
 			// to debug:
 			// buttons[bombLocations.get(i)].setText("BOMB");
 		}
-
-		/*
-		 * for (int i = 0; i < (sizeHeigth * sizeWidth); i++) { if
-		 * (!bombLocations.contains(i)) {
-		 * buttons[i].setText(Integer.toString(getBombValue(i))); } }
-		 */
 	}
 
 	public static int getUniqueRand()
